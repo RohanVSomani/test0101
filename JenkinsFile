@@ -6,7 +6,7 @@ maven 'maven'
 stages{
 	stage('Checkout'){
 		steps{
-			git branch:'main' url:'https://github.com/RohanVSomani/test0101.git'
+			git branch:'main', url:'https://github.com/RohanVSomani/test0101.git'
 		}
 	}
 	stage('Build'){
