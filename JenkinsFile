@@ -1,0 +1,38 @@
+pipeline{
+agent any
+tools{
+maven 'Maven'
+jdk 'JDK'
+}
+stages{
+	stage('Checkout'){
+		steps{
+			git branch:'main' url:'https://github.com/RohanVSomani/test0101.git'
+		}
+	}
+	stage('Build'){
+		steps{
+			sh 'mvn clean package'
+		}
+	}
+	stage('test'){
+		steps{
+			sh 'mvn test'
+		}
+	}
+	stage('Run the Application'){
+		steps{
+			sh 'java -jar target/mavenApp-1.0-SNAPSHOT.jar'
+		}
+	}
+	
+}
+post{
+	success{
+		echo 'Build successful'
+	}
+	failure{
+		echo 'Build failure'
+	}
+}
+}
